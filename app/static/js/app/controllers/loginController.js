@@ -15,4 +15,9 @@ angular.module('app')
                     }
                 });
         };
+
+        $scope.logout = function () {
+            authService.logout();
+            $state.go('login');
+        };
     }]);

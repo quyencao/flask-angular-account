@@ -23,27 +23,25 @@
 </head>
 <body ng-app="app">
      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Account Portal</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li class="nav-item" ng-if="isLoggedIn">
             <a class="nav-link" ui-sref="accounts">Accounts</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" ui-sref="home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+          <li class="nav-item" ng-if="!isLoggedIn">
+            <a class="nav-link" ui-sref="login">Login</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav" ng-controller="loginController">
+          <li class="nav-item" ng-if="isLoggedIn">
+            <a class="nav-link" ui-sref="login" ng-click="logout()">Logout</a>
+          </li>
+        </ul>
       </div>
     </nav>
 
