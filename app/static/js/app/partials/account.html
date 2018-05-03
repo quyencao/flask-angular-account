@@ -1,0 +1,141 @@
+<div ng-init="initializeController()">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <p>Search Account</p>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Account Number</label>
+                      <div class="col-sm-9">
+                         <input type="number" class="form-control" ng-model="accountNumber">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Balance</label>
+                      <div class="col-sm-9">
+                         <input type="number" class="form-control" ng-model="balance">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">First Name</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="firstName">
+                      </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Last Name</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="lastName">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Age</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="age">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Gender</label>
+                      <div class="col-sm-9">
+                          <select class="form-control" ng-model="gender">
+                              <option value="-1">Search by gender</option>
+                              <option value="M">Male</option>
+                              <option value="F">Female</option>
+                          </select>
+                      </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Address</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="address">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Employer</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="employer">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="email">
+                      </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">City</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="city">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                      <label class="col-sm-3 col-form-label">State</label>
+                      <div class="col-sm-9">
+                         <input type="text" class="form-control" ng-model="state">
+                      </div>
+                </div>
+                <div class="form-group col-4 row">
+                </div>
+            </div>
+        </div>
+        <div class="card-footer align-content-center">
+            <button class="btn btn-primary btn-lg" ng-click="searchAccount()">Search</button>
+            <button class="btn btn-danger btn-lg" ng-click="reset()">Reset</button>
+        </div>
+    </div>
+
+    <div class="horizontal-scroll mt-3">
+      <div class="form-group p-2 d-flex">
+        <label>Rows on page
+          <select class="form-control" title="Rows on page"
+                  ng-model="pageSize" ng-options="i for i in [5,10,15,20,25]">
+          </select>
+        </label>
+        <div class="p-2 ml-auto">
+            <button class="btn btn-primary" ng-click="openModal()">Create Account</button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+            <tr>
+              <th ng-click="sort('account_number')">Account Number</th>
+              <th ng-click="sort('balance')">Balance</th>
+              <th ng-click="sort('firstname')">First Name</th>
+              <th ng-click="sort('lastname')">Last Name</th>
+              <th ng-click="sort('email')">Email</th>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in accounts">
+                <td>{{item.account_number}}</td>
+                <td>{{item.balance}}</td>
+                <td>{{item.firstname}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning" ng-click="openModal($index)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-danger" ng-click="delete($index)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+   <ul uib-pagination total-items="totalAccounts"
+    ng-model="currentPageNumber"
+    items-per-page="pageSize"
+    max-size="5"
+    class="pagination justify-content-center"
+    boundary-link-numbers="true"
+    ng-change="pageChanged()"></ul>
+</div>

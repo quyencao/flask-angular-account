@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Account Portal{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <script src="/static/js/angular.min.js"></script>
+    <script src="/static/js/angular-ui-router.min.js"></script>
+    <script src="/static/js/angular-cookies.min.js"></script>
+    <script src="/static/js/ui-bootstrap-tpls-3.0.3.min.js"></script>
+    <script src="/static/js/app/app.module.js"></script>
+    <script src="/static/js/app/services/ajaxService.js"></script>
+    <script src="/static/js/app/services/accountService.js"></script>
+    <script src="/static/js/app/services/authService.js"></script>
+    <script src="/static/js/app/controllers/accountInqueryController.js"></script>
+    <script src="/static/js/app/controllers/accountMaintainanceController.js"></script>
+    <script src="/static/js/app/controllers/loginController.js"></script>
+    <script src="/static/js/app/directives/accountNumberExistDirective.js"></script>
+    <script src="/static/js/app/directives/emailExistDirective.js"></script>
+
+</head>
+<body ng-app="app">
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="accounts">Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main" class="container-fluid" style="margin-top: 100px">
+        <div ui-view></div>
+    </main><!-- /.container -->
+
+
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <!--<script src="/static/js/bootstrap.min.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,130 @@
+<div class="account-modal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{title}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form name="account_form" novalidate>
+          <div class="form-group" ng-if="action">
+            <label>Account Number</label>
+            <input type="number" class="form-control" name="account_number"
+                   ng-model="account.account_number"
+                   ng-required="true"
+                   min="0"
+                   account-number-exist>
+             <div ng-show="account_form.account_number.$invalid && account_form.account_number.$touched">
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.account_number.$error.required">You must enter an account number.</small>
+                  <small class="form-text text-muted error"
+                  ng-show="account_form.account_number.$error.number">Your account number must be a number.</small>
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.account_number.$error.available">This account number is already used.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Balance</label>
+            <input type="number" class="form-control" name="balance"
+                   ng-model="account.balance"
+                   ng-required="true"
+                   min="0">
+             <div ng-show="account_form.balance.$invalid && account_form.balance.$touched">
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.balance.$error.required">You must enter your balance.</small>
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.balance.$error.min">Your balance must greater than 0.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="firstname"
+                   ng-model="account.firstname"
+                   ng-required="true">
+            <small class="form-text text-muted error"
+                   ng-show="account_form.firstname.$invalid && account_form.firstname.$touched">You must enter first name.</small>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastname"
+                   ng-model="account.lastname"
+                   ng-required="true">
+              <small class="form-text text-muted error"
+                   ng-show="account_form.lastname.$invalid && account_form.lastname.$touched">You must enter last name.</small>
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" class="form-control" name="age"
+                   ng-model="account.age"
+                   ng-required="true"
+                   min="0">
+            <div ng-show="account_form.age.$invalid && account_form.age.$touched">
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.age.$error.required">You must enter your age.</small>
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.age.$error.min">Your age must greater than 0.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <select class="form-control" name="gender"
+                    ng-model="account.gender"
+                    ng-required="true">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            <small class="form-text text-muted error"
+                   ng-show="account_form.gender.$invalid && account_form.gender.$touched">You must select your gender.</small>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address"
+                   ng-model="account.address"
+                   ng-required="true">
+              <small class="form-text text-muted error"
+                   ng-show="account_form.address.$invalid && account_form.address.$touched">You must enter your address.</small>
+          </div>
+          <div class="form-group">
+            <label>Employer</label>
+            <input type="text" class="form-control" name="employer"
+                   ng-model="account.employer"
+                   ng-required="true">
+              <small class="form-text text-muted error"
+                   ng-show="account_form.employer.$invalid && account_form.employer.$touched">You must enter your employer.</small>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email"
+                   ng-model="account.email"
+                   ng-required="true"
+                   ng-pattern="emailFormat"
+                   email-exist>
+              <div ng-show="account_form.email.$invalid && account_form.email.$touched">
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.email.$error.required">You must enter an email.</small>
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.email.$error.pattern">You must enter valid email.</small>
+                  <small class="form-text text-muted error"
+                   ng-show="account_form.email.$error.available">This email is already used.</small>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" name="city"
+                   ng-model="account.city"
+                    ng-required="true">
+              <small class="form-text text-muted error"
+                   ng-show="account_form.city.$invalid && account_form.city.$touched">You must enter your city.</small>
+          </div>
+          <div class="form-group">
+            <label>State</label>
+            <input type="text" class="form-control" name="state"
+                   ng-model="account.state"
+                   ng-required="true">
+             <small class="form-text text-muted error"
+                   ng-show="account_form.state.$invalid && account_form.state.$touched">You must enter your state.</small>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="save()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid #DA3637;
+}
+
+input.ng-valid.ng-touched,
+select.ng-valid.ng-touched{
+    border: 1px solid #509D12;
+}
+
+.error {
+    color: red !important;
+}
+
+.ng-invalid .modal-footer .btn-primary {
+    background-color: #6c757d !important;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.container-fluid {
+    width: 95%;
+}
